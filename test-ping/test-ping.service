@@ -1,0 +1,16 @@
+# view log `journalctl -lf -u myapp`
+[Unit]
+Description=Temperature alarm system telegram bot
+After=network-online.target
+
+[Service]
+#Restart=on-failure
+#ExecStartPre=/bin/sh -c 'until ping -c1 10.8.0.1; do sleep 1; done;'
+WorkingDirectory=/home/pi/Projects/Nodejs/telebot-temperature/test-ping
+ExecStart=/usr/bin/node /home/pi/Projects/Nodejs/telebot-temperature/test-ping/index-fs.js
+
+[Install]
+WantedBy=multi-user.target
+
+#[Service]
+#   ExecStartPre=/bin/sh -c 'until ping -c1 google.com; do sleep 1; done;'
