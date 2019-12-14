@@ -1,4 +1,4 @@
-const {bot} = require('../bot')
+const {bot} = require('../../bot')
 
 const hello = (msg) => {
     console.log(msg.from.first_name)

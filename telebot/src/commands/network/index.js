@@ -1,6 +1,6 @@
 const {bot} = require('../bot')
 
-const ip = (msg) => {
+const network = (msg) => {
     var ifaces = os.networkInterfaces();
     var ips = ''
     Object.keys(ifaces).forEach(function (ifname) {
@@ -23,4 +23,4 @@ const ip = (msg) => {
     return bot.sendMessage(msg.from.id, `Local IPs: ${ ips }`);
 };
 
-module.exports.ip = ip
+module.exports.network = network

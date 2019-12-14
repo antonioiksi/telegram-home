@@ -1,4 +1,4 @@
-const {bot} = require('../bot')
+const {bot} = require('../../bot')
 const {data_joiners} = require('../../data')
 
 const join = (msg) => {
