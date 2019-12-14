@@ -2,7 +2,7 @@ const fs = require('fs')
 // const ping = require('ping');
 var ping = require ("net-ping");
 
-const file = '/home/pi/test-ping'
+const file = '/home/user/test-ping'
 
 const host = '10.0.0.31'
 
@@ -23,7 +23,7 @@ const host = '10.0.0.31'
 
 
 
-setInterval(function(){
+// setInterval(function(){
     const test_ping = {};
     // Default options
     var options = {
@@ -51,7 +51,7 @@ setInterval(function(){
             } else {
                 console.log(`file ${file} updated`)
             }
-        })   
+        })
     });
 
-}, 60000);
+// }, 60000);
