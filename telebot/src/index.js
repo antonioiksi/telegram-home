@@ -6,16 +6,32 @@ const {bot, BUTTONS} = require('./bot')
 
 const {start, hide, KEYBOARD} = require('./commands/default')
 const {hello} = require('./commands/hello')
+const {gettemp, settemp} = require('./commands/ds18b20-raspi')
 const {join, joiners} = require('./commands/join')
 
 bot.on('/start', start)
 bot.on('/hide', hide)
+
 bot.on('/hello', hello)
 BUTTONS['hello'] = {
-    label: '🌡 Температура в котельной',
+    label: 'HELLO',
     command: '/hello'
 }
 KEYBOARD.push([BUTTONS.hello.label])
+
+bot.on('/gettemp', gettemp)
+BUTTONS['gettemp'] = {
+    label: '🌡 Температура в котельной',
+    command: '/gettemp'
+}
+KEYBOARD.push([BUTTONS.gettemp.label])
+
+bot.on(/^\/settemp (.+)$/, settemp)
+BUTTONS['settemp'] = {
+    label: '🌡 Установить температуру',
+    command: '/settemp'
+}
+KEYBOARD.push([BUTTONS.settemp.label])
 
 bot.on('/join', join)
 BUTTONS["join"] = {
