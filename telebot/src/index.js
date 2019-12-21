@@ -6,7 +6,7 @@ const {bot, BUTTONS} = require('./bot')
 
 const {start, hide, KEYBOARD} = require('./commands/default')
 const {hello} = require('./commands/hello')
-const {gettemp, settemp} = require('./commands/ds18b20-raspi')
+const {gettemp, settemp, tempalert} = require('./commands/ds18b20-raspi')
 const {join, joiners} = require('./commands/join')
 
 bot.on('/start', start)
@@ -32,6 +32,14 @@ BUTTONS['settemp'] = {
     command: '/settemp'
 }
 KEYBOARD.push([BUTTONS.settemp.label])
+
+bot.on('/tempalert', tempalert)
+BUTTONS['tempalert'] = {
+    label: '🌡 узнать температуру',
+    command: '/tempalert'
+}
+KEYBOARD.push([BUTTONS.tempalert.label])
+
 
 bot.on('/join', join)
 BUTTONS["join"] = {

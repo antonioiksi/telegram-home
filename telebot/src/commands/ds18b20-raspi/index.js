@@ -1,5 +1,6 @@
 const {bot} = require('../../bot')
 const sensor = require('ds18b20-raspi');
+const {data} = require('../../data')
 
 const gettemp = (msg) => {
     // round temperature reading to 1 digit
@@ -11,7 +12,7 @@ const gettemp = (msg) => {
 const settemp = (msg, props) => {
     var tempNew = props.match[1];
     if (tempNew >=0 && tempNew < 40) {
-        tempPorog = tempNew;
+        data.tempPorog = tempNew;
         return bot.sendMessage(msg.from.id, `теперь Вы узнаете если температура опустится ниже ${tempPorog}℃`);
     }
     else {
@@ -19,10 +20,10 @@ const settemp = (msg, props) => {
     }
 }
 
-bot.on('/tempalert', (msg) => {
-    return bot.sendMessage(msg.from.id, `порог температуры установлен на ${tempPorog} ℃`);
-});
-
+const tempalert = (msg) => {
+    return bot.sendMessage(msg.from.id, `порог температуры установлен на ${data.tempPorog} ℃`);
+}
 
 module.exports.gettemp = gettemp;
 module.exports.settemp = settemp;
+module.exports.tempalert = tempalert;
